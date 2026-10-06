@@ -5,12 +5,12 @@ menuToggle.addEventListener('click',()=>{const expanded=menuToggle.getAttribute(
 mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{mobileMenu.hidden=true;menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Відкрити меню');}));
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobileMenu.hidden){mobileMenu.hidden=true;menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Відкрити меню');menuToggle.focus();}});
 const services={
-  tires:{title:'Шиномонтаж та балансування',description:'Заміна шин до сезону та обслуговування коліс легкових автомобілів, мікроавтобусів і мототехніки.',items:['Монтаж і демонтаж шин','Комп’ютерне балансування коліс','Ремонт пошкоджених шин']},
-  repair:{title:'Ремонт дисків і шин',description:'Можливість відновлення визначається після огляду. Надішли фото пошкодження, щоб почати розмову з майстром.',items:['Рихтування сталевих та легкосплавних дисків','Робота з автомобільними та мото дисками','Аргонне зварювання та ремонт шин']},
-  paint:{title:'Порошкове фарбування',description:'Відновлення покриття автомобільних та мото дисків. Приклади кольорів і готових робіт дивись у нашому Instagram.',items:['Піскоструминна обробка','Підготовка поверхні диска','Порошкове фарбування']},
-  diamond:{title:'Діамантова проточка',description:'Обробка лицьової поверхні легкосплавного диска для відновлення малюнка та металевого блиску. Можливість проточки залежить від стану диска.',items:['Оцінка стану поверхні','Механічна обробка лицьової частини','Обговорення сумісності з іншими роботами']},
-  sale:{title:'Продаж дисків',description:'Актуальні комплекти дивись у розділі «Продаж дисків» нашого Instagram. Наявність і вартість уточни перед візитом.',items:['Уточни діаметр, ширину та виліт','Перевір кріплення та сумісність із авто','Домовся про огляд комплекту']},
-  storage:{title:'Сезонне зберігання',description:'Зберігання комплекту шин між сезонами. Уточни наявність місця та умови, перш ніж привозити колеса.',items:['Узгодь термін зберігання','Уточни вартість для свого комплекту','Домовся про передачу та отримання']}
+  tires:{title:'Шиномонтаж',description:'Заміна сезонного комплекту або встановлення нових шин. Уточни вартість для свого автомобіля перед візитом.',items:['Монтаж і демонтаж шин','Сезонна заміна комплекту','Обговорення потрібних робіт із майстром']},
+  balance:{title:'Балансування коліс',description:'Вібрація на швидкості може бути пов’язана з колесами. Після заміни шин або ремонту варто обговорити балансування.',items:['Балансування коліс','Перевірка після заміни шин','Уточнення причин вібрації']},
+  repair:{title:'Ремонт шин та вулканізація',description:'Спосіб ремонту залежить від місця, розміру та характеру пошкодження. Не кожну пошкоджену шину можна ремонтувати.',items:['Огляд пошкодження','Ремонт проколів','Вулканізація після оцінки стану']},
+  straighten:{title:'Рихтування дисків',description:'Відновлення геометрії пошкодженого диска, якщо його стан дозволяє ремонт. Надішли фото або домовся про огляд.',items:['Оцінка деформації','Рихтування диска','Обговорення доцільності відновлення']},
+  welding:{title:'Аргонне зварювання',description:'Робота з тріщинами та іншими пошкодженнями дисків. Можливість зварювання визначається після огляду.',items:['Огляд тріщини та стану диска','Аргонне зварювання','Уточнення обсягу ремонту']},
+  paint:{title:'Порошкове фарбування дисків',description:'Оновлення покриття дисків. У профілі Vinshyna є приклади фарбування та готових робіт.',items:['Обговорення стану покриття','Вибір кольору','Порошкове фарбування дисків']}
 };
 const dialog=document.querySelector('.service-dialog');
 let lastServiceButton=null;
@@ -18,4 +18,24 @@ document.querySelectorAll('[data-service]').forEach(button=>button.addEventListe
 document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close();}});
 dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');lastServiceButton?.focus();});
-document.querySelector('#year').textContent=new Date().getFullYear();
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+if('IntersectionObserver' in window&&!reducedMotion.matches){
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.brand-strip>span,.section-top,.section-heading,.service-card,.restoration-content>*:not(.tags),.process-layout h2,.process-step,.faq-layout>div,.contact-copy,.contact-card').forEach(element=>{
+    element.classList.add('reveal');
+    revealObserver.observe(element);
+  });
+  document.querySelectorAll('.service-card').forEach((card,index)=>{
+    card.style.setProperty('--reveal-delay',(index%3)*.06+'s');
+  });
+  document.querySelectorAll('.process-step').forEach((step,index)=>{
+    step.style.setProperty('--reveal-delay',index*.06+'s');
+  });
+}
