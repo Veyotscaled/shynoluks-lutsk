@@ -39,4 +39,58 @@
 .button-red:hover{box-shadow:0 8px 30px #ed302629;transform:translateY(-2px)}
 .button:active{transform:translateY(1px)}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+.brand-strip>span{font-size:clamp(2rem,10.75vw,14rem)}
+.logo>span{font-size:17px}
+.price-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.price-tab{border:1px solid #ffffff2b;background:transparent;color:var(--muted);border-radius:50px;padding:11px 23px;font-size:14px;font-weight:500;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.price-tab:hover{color:var(--white);border-color:#ffffff70}
+.price-tab[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.price-tab:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.price-card{background:var(--panel);border-top:1px solid #ffffff1a;padding:28px 25px}
+.price-size{font-size:12px;font-weight:600;letter-spacing:.12em}
+.price-total{display:flex;align-items:baseline;gap:10px;margin:23px 0 25px}
+.price-total strong{font-family:Unbounded,sans-serif;font-size:38px;line-height:1;color:var(--red)}
+.price-total>span{font-size:11px;color:var(--muted)}
+.price-card dl{margin:0;font-size:12px;color:var(--muted)}
+.price-card dl>div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.price-card dd{margin:0;white-space:nowrap;color:var(--white)}
+.price-extras{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.extra-price{border:1px solid var(--line);padding:25px 28px}
+.extra-price>span{font-size:10px;letter-spacing:.15em;color:var(--muted)}
+.extra-price>strong{font-family:Unbounded,sans-serif;display:block;font-size:30px;line-height:1.3;margin:17px 0 12px}
+.extra-price small{font-family:Onest,sans-serif;font-size:14px;font-weight:400;color:var(--muted)}
+.extra-price p{font-size:13px;color:var(--muted)}
+.price-note{font-size:12px;line-height:1.7;color:var(--muted);margin-top:25px;max-width:680px}
+.price-note a{color:var(--white);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.tire-offer{max-width:460px;gap:21px}
+.tire-offer .offer-number{font-family:Unbounded,sans-serif;font-size:45px;font-weight:700;line-height:1;color:var(--red);white-space:nowrap}
+.offer-number>span{display:inline;font-size:17px;color:var(--red);margin-left:3px}
+.tire-offer>div>strong{font-size:13px}
+.tire-offer>div>span{font-size:11px;line-height:1.6}
+.contact-layout{grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr);gap:64px;align-items:start}
+.contact-copy h2{font-size:clamp(30px,3.1vw,48px)}
+.contact-phones{display:grid;gap:7px;margin-top:28px}
+.contact-phones a{width:fit-content;font-size:17px;font-weight:500;transition:color .3s var(--ease)}
+.contact-phones a:first-child{font-size:25px;color:var(--white);font-weight:600}
+.contact-phones a:not(:first-child){color:var(--muted)}
+.contact-phones a:hover{color:var(--red)}
+.contact-email{display:inline-block;font-size:13px;color:var(--muted);margin-top:18px;text-decoration:underline;text-underline-offset:4px}
+.branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.branch-card{background:#242425;padding:27px 24px;display:flex;flex-direction:column}
+.branch-card .contact-card-top>.eyebrow{font-size:9px;letter-spacing:.12em}
+.branch-card h3{font-size:18px;font-style:italic;margin-top:25px}
+.branch-city{color:var(--muted);font-size:12px;margin-top:10px;min-height:38px}
+.branch-hours{margin:25px 0}
+.branch-hours>span{font-size:10px;color:#909090;letter-spacing:.14em}
+.branch-hours p{font-size:13px;line-height:1.7;margin-top:8px}
+.branch-card .map-link{font-size:12px;gap:8px;margin-top:auto}
+.market-point{border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px 0 0;margin-top:25px}
+.market-point>div>span{font-size:9px;letter-spacing:.14em;color:var(--muted)}
+.market-point p{font-size:13px;margin-top:8px}
+.market-point>a{color:var(--red);padding:7px 10px;border:1px solid var(--line);border-radius:50%;flex-shrink:0}
+@media(max-width:1200px){.contact-layout{grid-template-columns:1fr;gap:45px}.contact-copy{max-width:720px}.contact-copy h2{font-size:40px}.contact-actions{flex-direction:row;flex-wrap:wrap}.contact-actions .button{min-width:0}.branch-card{padding:30px}.branch-card h3{font-size:24px}.branch-city{min-height:0}.price-card{padding:25px 20px}.price-total{flex-wrap:wrap;gap:8px}.price-total strong{font-size:34px}}
+@media(max-width:900px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.price-total strong{font-size:38px}.price-card{padding:28px}.price-card dl{font-size:13px}.restoration h2{font-size:4.6vw}}
+@media(max-width:600px){.logo>span{font-size:12px}.logo>span>span{font-size:7px;letter-spacing:.1em}.header-book{font-size:11px;padding-inline:14px}.brand-strip>span{font-size:10.2vw}.brand-strip>div{font-size:7px;gap:18px}.brand-strip>div>span{max-width:48%}.price-tabs{gap:8px;margin-bottom:22px}.price-tab{padding:10px 15px;font-size:12px}.price-grid{grid-template-columns:1fr}.price-card{padding:24px}.price-total{margin:19px 0 21px}.price-total strong{font-size:38px}.price-card dl{font-size:13px}.price-extras{grid-template-columns:1fr}.extra-price{padding:24px}.extra-price>strong{font-size:29px}.price-note{font-size:11px}.restoration h2{font-size:clamp(30px,8vw,44px)}.tire-offer{gap:16px;padding:17px}.tire-offer .offer-number{font-size:40px}.tire-offer>div>strong{font-size:12px}.tire-offer>div>span{font-size:10px}.contact-layout{gap:35px}.contact-copy h2{font-size:clamp(28px,7vw,38px)}.contact-copy>p br{display:inline}.contact-phones a:first-child{font-size:23px}.contact-phones a:not(:first-child){font-size:16px}.contact-actions .button{padding-inline:20px;font-size:12px}.branch-grid{grid-template-columns:1fr}.branch-card{padding:26px}.branch-card h3{font-size:21px}.branch-city{font-size:13px}.branch-card .contact-card-top>.eyebrow{font-size:10px}.branch-hours p{font-size:14px}.branch-card .map-link{font-size:14px}.market-point p{font-size:12px}.hero-actions .button{padding-inline:17px}.hero-actions .text-link{font-size:12px}}
+@media(max-width:360px){.logo>span{font-size:11px}.logo>span>span{font-size:6px}.header-book{font-size:10px;padding-inline:12px}.header{gap:10px}.hero-copy h1{font-size:31px}.hero-actions{gap:14px}.hero-actions .button{font-size:11px;padding-inline:14px}.hero-actions .text-link{font-size:11px}.branch-card{padding:23px}.branch-card h3{font-size:18px}.contact-copy h2{font-size:26px}.price-tab{font-size:11px;padding-inline:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
